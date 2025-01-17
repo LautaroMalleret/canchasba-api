@@ -19,7 +19,7 @@ public class Controller {
 
     @Autowired
     InterfaceCanchaService canchaService;
-
+    @CrossOrigin
     @GetMapping("canchas")
     public ResponseEntity<?> showAll(){
         List<Cancha> listCanchas = canchaService.listAll();
