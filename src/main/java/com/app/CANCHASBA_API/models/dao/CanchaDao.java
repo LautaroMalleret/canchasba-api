@@ -9,9 +9,9 @@ import java.util.List;
 public interface CanchaDao extends CrudRepository<Cancha,Long> {
     //Retorna todas las canchas que cumplan el filtro
     @Query("SELECT c FROM Cancha c " +
-            "WHERE (:city IS NULL OR c.city = :city) " +
-            "AND (:type IS NULL OR c.type = :type) " +
-            "AND (:size IS NULL OR CAST(c.size AS string) LIKE CONCAT('%', :size, '%'))")
+            "WHERE (:city IS NULL  OR c.city = :city) " +
+            "AND (:type IS NULL OR :type = '' OR c.type = :type) " +
+            "AND (:size IS NULL OR :size = '' OR CAST(c.size AS string) LIKE CONCAT('%', :size, '%'))")
     List<Cancha> findFilteredCanchas(
             @Param("city") String city,
             @Param("type") String type,
