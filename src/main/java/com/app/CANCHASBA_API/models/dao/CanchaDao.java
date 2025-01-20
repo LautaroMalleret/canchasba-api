@@ -11,7 +11,7 @@ public interface CanchaDao extends CrudRepository<Cancha,Long> {
     @Query("SELECT c FROM Cancha c " +
             "WHERE (:city IS NULL OR c.city = :city) " +
             "AND (:type IS NULL OR c.type = :type) " +
-            "AND (:size IS NULL OR CAST(c.size AS string) LIKE CONCAT('%', :size, '%'))")
+            "AND (:size IS NULL OR c.size LIKE CONCAT('%', :size, '%'))")
     List<Cancha> findFilteredCanchas(
             @Param("city") String city,
             @Param("type") String type,

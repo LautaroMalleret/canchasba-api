@@ -177,7 +177,12 @@ public class Controller {
             @RequestParam(required = false) String city,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) String size) {
-        List<Cancha> filteredCanchas = canchaService.getFilteredCanchas(city.toUpperCase(), type.toUpperCase(), size);
+
+        // Convierte a mayúsculas solo si no es null
+        city = city != null ? city.toUpperCase() : null;
+        type = type != null ? type.toUpperCase() : null;
+
+        List<Cancha> filteredCanchas = canchaService.getFilteredCanchas(city, type, size);
         if (filteredCanchas.isEmpty()) {
             return new ResponseEntity<>(
                     MessageResponse.builder()
