@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200") // Cambia según la URL de tu frontend
+@CrossOrigin(origins = {"http://localhost:4200", "https:lautaromalleret.github.io"})
 @RestController
 @RequestMapping("/api/v1")
 public class Controller {
